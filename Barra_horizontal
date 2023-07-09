@@ -1,0 +1,50 @@
+{
+  "data": {"name": "dataset"},
+  "layer": [
+    {
+      "params":  [
+      {
+        "name": "highlight",
+        "select": {"type": "point", "on": "mouseover"}
+      },
+      {"name": "select", "select": "point"}
+    ],
+      "mark": {"type": "bar", "cursor": "pointer"},
+      "encoding": {
+        "y": {
+          "field": "Minorista",
+          "type": "nominal",
+          "axis": {"title": "Años", "labelAngle": -40},
+          "scale": {"padding":5,"paddingInner": 0.4}
+        },
+        "x": {
+          "field": "Total ventas",
+          "type": "quantitative",
+          "axis": {"format": "$,.2f", "labelFontSize": 14, "title": "Ventas"}
+         },
+        "opacity": {
+          "condition": {
+            "test": {"field": "__selected__", "equal": "off"},
+            "value": 0.3
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 30, "height": 50},
+      "encoding": {
+        "y": {"field": "Minorista", "type": "nominal"},
+        "x": {"field": "Total ventas", "type": "quantitative"},
+        "url": {"field": "img", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "baseline": "middle", "dy":-16, "dx":-8},
+      "encoding": {
+        "y": {"field": "Minorista", "type": "nominal"},
+        "x": {"field": "Total ventas", "type": "quantitative"},
+        "text": {"field": "Total ventas", "type": "quantitative", "format": "$,.0f"}
+      }
+    }
+  ]
+}
